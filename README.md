@@ -34,6 +34,13 @@ Here are a few examples:
     $ Time.now.to_msgpack
     => "\xB92013-09-11T10:40:39-07:00"
 
+    $ ActiveSupport::MessagePack.decode Time.now.to_msgpack
+    => "2013-09-11T11:23:07-07:00"
+
+    # After setting ActiveSupport.parse_msgpack_times to true
+    $ ActiveSupport::MessagePack.decode Time.now.to_msgpack
+    => Wed, 11 Sep 2013 11:25:18 -0700
+
 ## Contributing
 
 1. Fork it
