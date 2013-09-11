@@ -19,5 +19,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "activesupport", ">= 3.0"
-  spec.add_runtime_dependency "msgpack"
+  if RUBY_ENGINE == "jruby"
+    spec.add_runtime_dependency "msgpack-jruby"
+  else
+    spec.add_runtime_dependency "msgpack"
+  end
 end
