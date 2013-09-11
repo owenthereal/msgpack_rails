@@ -20,5 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "activesupport", ">= 3.0"
   spec.add_runtime_dependency "activemodel", ">= 3.0"
+  spec.add_runtime_dependency "railties", ">= 3.0"
   spec.add_runtime_dependency "msgpack"
 end

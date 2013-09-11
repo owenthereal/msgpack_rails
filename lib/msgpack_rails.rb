@@ -17,3 +17,11 @@ module ActiveModel
     end
   end
 end
+
+module MsgpackRails
+  class Rails < ::Rails::Engine
+    initializer "msgpack_rails" do
+      ::ActiveRecord::Base.send(:include, ActiveModel::Serializers::MessagePack)
+    end
+  end
+end
