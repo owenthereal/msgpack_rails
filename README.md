@@ -1,7 +1,7 @@
 # msgpack_rails [![Build Status](https://travis-ci.org/jingweno/msgpack_rails.png?branch=master)](https://travis-ci.org/jingweno/msgpack_rails)
 
-The Rails way to serialize/deserialize with [Message Pack](http://msgpack.org).
-It implements an [ActiveSupport](http://rubygems.org/gems/activesupport) adapter and an [ActiveModel](http://rubygems.org/gems/activemodel) adapter for Message Pack.
+The Rails way to serialize/deserialize objects with [Message Pack](http://msgpack.org).
+It implements the [ActiveSupport](http://rubygems.org/gems/activesupport) [encoder](https://github.com/jingweno/msgpack_rails/blob/master/lib/msgpack_rails/activesupport/message_pack/encoding.rb) & [decoder](https://github.com/jingweno/msgpack_rails/blob/master/lib/msgpack_rails/activesupport/message_pack/decoding.rb) and the [ActiveModel](http://rubygems.org/gems/activemodel) [serializer](https://github.com/jingweno/msgpack_rails/blob/master/lib/msgpack_rails/activemodel/serializers/message_pack.rb) for Message Pack.
 
 ## Installation
 
@@ -41,7 +41,7 @@ Here are a few examples:
     $ ActiveSupport::MessagePack.decode Time.now.to_msgpack
     => Wed, 11 Sep 2013 11:25:18 -0700
 
-You can also use it as part of `ActiveModel`:
+You can also use it as part of `ActiveModel`, similar to `to_json`:
 
 ```ruby
 class Contact
@@ -51,8 +51,8 @@ class Contact
 end
 
 @contact = Contact.new
-@contact.name = 'Konata Izumi'
-@contact.age = 16
+@contact.name = 'Owen Ou'
+@contact.age = 28
 @contact.created_at = Time.utc(2006, 8, 1)
 @contact.awesome = true
 @contact.preferences = { 'shows' => 'anime' }
