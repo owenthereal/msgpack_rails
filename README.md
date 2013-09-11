@@ -1,6 +1,7 @@
-# MsgpackRails
+# msgpack_rails
 
-TODO: Write a gem description
+The Rails way to serialize/deserialize with [Message Pack](http://msgpack.org).
+It implements an [ActiveSupport](http://rubygems.org/gems/activesupport) adapter and an [ActiveModel](http://rubygems.org/gems/activemodel) adapter for Message Pack.
 
 ## Installation
 
@@ -18,7 +19,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+`msgpack_rails` converts data type using `as_json` before feeding it into [msgpack](http://rubygems.org/gems/msgpack).
+Here are a few examples:
+
+    $ ActiveSupport::MessagePack.encode(:a => :b)
+    => "\x81\xA1a\xA1b"
+
+    $ ActiveSupport::MessagePack.encode(Time.now)
+    => "\xB92013-09-11T10:40:39-07:00"
+
+    $ Time.now.as_msgpack
+    => "2013-09-11T10:48:13-07:00"
+
+    $ Time.now.to_msgpack
+    => "\xB92013-09-11T10:40:39-07:00"
 
 ## Contributing
 
