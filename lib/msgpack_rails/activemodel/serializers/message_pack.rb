@@ -1,3 +1,4 @@
+require "active_model"
 require "msgpack_rails/activesupport/message_pack"
 
 module ActiveModel

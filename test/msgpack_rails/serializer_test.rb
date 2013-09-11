@@ -1,4 +1,5 @@
 require_relative "../test_helper"
+require "msgpack_rails/activemodel/serializers/message_pack"
 require_relative "models/contact"
 
 class Contact
