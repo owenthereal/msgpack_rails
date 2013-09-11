@@ -1,4 +1,4 @@
-# msgpack_rails
+# msgpack_rails [![Build Status](https://travis-ci.org/jingweno/msgpack_rails.png?branch=master)](https://travis-ci.org/jingweno/msgpack_rails)
 
 The Rails way to serialize/deserialize with [Message Pack](http://msgpack.org).
 It implements an [ActiveSupport](http://rubygems.org/gems/activesupport) adapter and an [ActiveModel](http://rubygems.org/gems/activemodel) adapter for Message Pack.
