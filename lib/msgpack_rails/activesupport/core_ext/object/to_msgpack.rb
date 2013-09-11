@@ -10,8 +10,9 @@ end
 # otherwise they will always use to_msgpack gem implementation.
 [Object, NilClass, TrueClass, FalseClass, Fixnum, Bignum, Float, String, Array, Hash, Symbol].each do |klass|
   klass.class_eval do
-    # Dumps object in msgpack. See http://msgpack.org for more info.
-    def to_msgpack(options = {})
+    alias_method :msgpack_to_msgpack, :to_msgpack if respond_to?(:to_msgpack)
+    # Dumps object in msgpack. See http://msgpack.org for more infoa
+    def to_msgpack(options = nil)
       ActiveSupport::MessagePack.encode(self, options)
     end
   end
