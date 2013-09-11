@@ -41,6 +41,27 @@ Here are a few examples:
     $ ActiveSupport::MessagePack.decode Time.now.to_msgpack
     => Wed, 11 Sep 2013 11:25:18 -0700
 
+You can also use it as part of `ActiveModel`:
+
+```ruby
+class Contact
+  include ActiveModel::Serializers::MessagePack
+
+  ...
+end
+
+@contact = Contact.new
+@contact.name = 'Konata Izumi'
+@contact.age = 16
+@contact.created_at = Time.utc(2006, 8, 1)
+@contact.awesome = true
+@contact.preferences = { 'shows' => 'anime' }
+
+@contact.to_msgpack                # => msgpack output
+@contact.to_msgpack(:root => true) # => include root in msgpack output
+```
+
+
 ## Contributing
 
 1. Fork it
