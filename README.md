@@ -1,4 +1,4 @@
-# msgpack_rails [![Build Status](https://travis-ci.org/jingweno/msgpack_rails.png?branch=master)](https://travis-ci.org/jingweno/msgpack_rails)
+# MessagePack for Rails [![Build Status](https://travis-ci.org/jingweno/msgpack_rails.png?branch=master)](https://travis-ci.org/jingweno/msgpack_rails)
 
 The Rails way to serialize/deserialize objects with [Message Pack](http://msgpack.org).
 It implements the [ActiveSupport](http://rubygems.org/gems/activesupport) [encoder](https://github.com/jingweno/msgpack_rails/blob/master/lib/msgpack_rails/activesupport/message_pack/encoding.rb) & [decoder](https://github.com/jingweno/msgpack_rails/blob/master/lib/msgpack_rails/activesupport/message_pack/decoding.rb) and the [ActiveModel](http://rubygems.org/gems/activemodel) [serializer](https://github.com/jingweno/msgpack_rails/blob/master/lib/msgpack_rails/activemodel/serializers/message_pack.rb) for Message Pack.
