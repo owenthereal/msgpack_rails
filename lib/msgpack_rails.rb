@@ -25,6 +25,19 @@ if defined?(::Rails)
     class Rails < ::Rails::Engine
       initializer "msgpack_rails" do
         ::ActiveRecord::Base.send(:include, ActiveModel::Serializers::MessagePack)
+
+        # Add a msgpack MIME type
+        Mime::Type.register "application/msgpack", :msgpack
+
+        # Register :msgpack as a renderer.
+        # Note that the options are currently only passed to the `as_json`
+        # call. This may not be the desired behaviour.
+        ActionController::Renderers.add :msgpack do |data, options|
+          data = data.as_json(options)
+
+          self.content_type ||= Mime::MSGPACK
+          self.response_body = data.to_msgpack()
+        end
       end
     end
   end
