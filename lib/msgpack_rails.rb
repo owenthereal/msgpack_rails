@@ -30,6 +30,12 @@ if defined?(::Rails)
           end
         end
 
+        if defined?(::Mongoid::Document)
+          ::ActiveSupport.on_load(:mongoid) do
+            ::Mongoid::Document.send(:include, ActiveModel::Serializers::MessagePack)
+          end
+        end
+
         ::Mime::Type.register "application/msgpack", :msgpack
 
         ::ActionController.add_renderer :msgpack do |data, options|
