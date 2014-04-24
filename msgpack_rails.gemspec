@@ -24,4 +24,6 @@ Gem::Specification.new do |spec|
   else
     spec.add_runtime_dependency "msgpack"
   end
+
+  spec.add_development_dependency "minitest", "~> 4.7.5"
 end
