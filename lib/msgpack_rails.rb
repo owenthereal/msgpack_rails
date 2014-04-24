@@ -29,6 +29,12 @@ if defined?(::Rails)
             ::ActiveRecord::Base.send(:include, ActiveModel::Serializers::MessagePack)
           end
         end
+
+        if defined?(::Mongoid::Document)
+          ::ActiveSupport.on_load(:mongoid) do
+            ::Mongoid::Document.send(:include, ActiveModel::Serializers::MessagePack)
+          end
+        end
       end
     end
   end
