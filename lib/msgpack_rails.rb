@@ -24,7 +24,11 @@ if defined?(::Rails)
   module MsgpackRails
     class Rails < ::Rails::Engine
       initializer "msgpack_rails" do
-        ::ActiveRecord::Base.send(:include, ActiveModel::Serializers::MessagePack)
+        if defined?(::ActiveRecord::Base)
+          ::ActiveSupport.on_load(:active_record) do
+            ::ActiveRecord::Base.send(:include, ActiveModel::Serializers::MessagePack)
+          end
+        end
 
         ::Mime::Type.register "application/msgpack", :msgpack
 
