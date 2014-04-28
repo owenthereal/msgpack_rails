@@ -1,6 +1,6 @@
 require_relative "../test_helper"
 
-class TestMessagePackEncoding < Test::Unit::TestCase
+class TestMessagePackEncoding < Minitest::Test
   def test_decoding
     [Time.now, [Date.new], {:foo => DateTime.new}].each do |data|
       assert_equal data.as_json, ActiveSupport::MessagePack.decode(ActiveSupport::MessagePack.encode(data))

@@ -19,7 +19,7 @@ class Contact
   end
 end
 
-class TestMessagePackSerializer < Test::Unit::TestCase
+class TestMessagePackSerializer < Minitest::Test
   def setup
     ActiveSupport.parse_msgpack_times = true
 

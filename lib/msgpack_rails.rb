@@ -25,6 +25,13 @@ if defined?(::Rails)
     class Rails < ::Rails::Engine
       initializer "msgpack_rails" do
         ::ActiveRecord::Base.send(:include, ActiveModel::Serializers::MessagePack)
+
+        ::Mime::Type.register "application/msgpack", :msgpack
+
+        ::ActionController.add_renderer :msgpack do |data, options|
+          self.content_type = Mime::MSGPACK
+          self.response_body = data.as_msgpack(options)
+        end
       end
     end
   end
