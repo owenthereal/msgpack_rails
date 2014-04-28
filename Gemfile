@@ -6,3 +6,4 @@ gemspec
 gem "rake"
 gem "railties"
 gem "activemodel"
+gem "minitest"
