@@ -38,7 +38,7 @@ if defined?(::Rails)
 
         ::Mime::Type.register "application/msgpack", :msgpack
 
-        ::ActionController.add_renderer :msgpack do |data, options|
+        ::ActionController::Renderers.add :msgpack do |data, options|
           self.content_type = Mime::MSGPACK
           self.response_body = data.as_msgpack(options)
         end
