@@ -1,20 +1,17 @@
 require "active_support"
 require "msgpack_rails/version"
-require "msgpack_rails/activesupport/message_pack"
 
 module ActiveSupport
   eager_autoload do
-    autoload :MessagePack
+    autoload :MessagePack, "msgpack_rails/activesupport/message_pack"
   end
 end
 
 if defined?(ActiveModel)
-  require "msgpack_rails/activemodel/serializers/message_pack"
-
   module ActiveModel
     module Serializers
       eager_autoload do
-        autoload :MessagePack
+        autoload :MessagePack, "msgpack_rails/activemodel/serializers/message_pack"
       end
     end
   end
