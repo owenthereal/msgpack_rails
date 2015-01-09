@@ -1,0 +1,9 @@
+{
+  "name": "Go Test",
+  "scripts": {
+    "postdeploy": "rake"
+  },
+  "env": {
+    "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-ruby"
+  }
+}
