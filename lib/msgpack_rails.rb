@@ -33,11 +33,15 @@ if defined?(::Rails)
           end
         end
 
+        if defined?(::Responders)
+          ::ActionController::Responder.send :undef_method, :to_msgpack
+        end
+
         ::Mime::Type.register "application/msgpack", :msgpack
 
         ::ActionController::Renderers.add :msgpack do |data, options|
           self.content_type = Mime::MSGPACK
-          self.response_body = data.as_msgpack(options)
+          self.response_body = data.to_msgpack(options)
         end
       end
     end
