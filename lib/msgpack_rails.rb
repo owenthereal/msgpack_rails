@@ -33,6 +33,10 @@ if defined?(::Rails)
           end
         end
 
+        if defined?(::Responders)
+          ::ActionController::Responder.send :undef_method, :to_msgpack
+        end
+
         ::Mime::Type.register "application/msgpack", :msgpack
 
         ::ActionController::Renderers.add :msgpack do |data, options|
