@@ -33,11 +33,11 @@ if defined?(::Rails)
           end
         end
 
-        ::Mime::Type.register "application/msgpack", :msgpack
+        ::Mime::Type.register "application/msgpack", :msgpack unless defined? Mime::MSGPACK
 
         ::ActionController::Renderers.add :msgpack do |data, options|
-          self.content_type = Mime::MSGPACK
-          self.response_body = data.as_msgpack(options)
+          self.content_type ||= Mime::MSGPACK
+          data.to_msgpack(options) unless data.kind_of?(String)
         end
       end
     end
