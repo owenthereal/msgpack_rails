@@ -35,9 +35,16 @@ if defined?(::Rails)
 
         ::Mime::Type.register "application/msgpack", :msgpack
 
-        ::ActionController::Renderers.add :msgpack do |data, options|
-          self.content_type = Mime::MSGPACK
-          self.response_body = data.as_msgpack(options)
+        if ::Rails::VERSION::MAJOR > 3 || ::Rails::VERSION::MINOR > 0
+          ::ActionController::Renderers.add :msgpack do |data, options|
+            self.content_type = Mime[:msgpack]
+            data.is_a?(String) ? data : data.to_msgpack(options)
+          end
+        else
+          ::ActionController::Renderers.add :msgpack do |data, options|
+            self.content_type = Mime[:msgpack]
+            self.response_body = data.is_a?(String) ? data : data.to_msgpack(options)
+          end
         end
       end
     end
