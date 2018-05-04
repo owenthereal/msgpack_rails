@@ -13,6 +13,7 @@ gemfile:
   - gemfiles/rails_50.gemfile
   - gemfiles/rails_51.gemfile
   - gemfiles/rails_52.gemfile
+  - gemfiles/rails_edge.gemfile
 matrix:
   exclude:
     # Rails 5.0+ requires CRuby 2.2.2+
@@ -22,18 +23,24 @@ matrix:
       gemfile: gemfiles/rails_51.gemfile
     - rvm: 1.9.3
       gemfile: gemfiles/rails_52.gemfile
+    - rvm: 1.9.3
+      gemfile: gemfiles/rails_edge.gemfile
     - rvm: 2.0.0
       gemfile: gemfiles/rails_50.gemfile
     - rvm: 2.0.0
       gemfile: gemfiles/rails_51.gemfile
     - rvm: 2.0.0
       gemfile: gemfiles/rails_52.gemfile
+    - rvm: 2.0.0
+      gemfile: gemfiles/rails_edge.gemfile
     - rvm: 2.1.0
       gemfile: gemfiles/rails_50.gemfile
     - rvm: 2.1.0
       gemfile: gemfiles/rails_51.gemfile
     - rvm: 2.1.0
       gemfile: gemfiles/rails_52.gemfile
+    - rvm: 2.1.0
+      gemfile: gemfiles/rails_edge.gemfile
     # CRuby 2.4+ requires Rails 4.2.8+
     - rvm: 2.4.0
       gemfile: gemfiles/rails_41.gemfile
