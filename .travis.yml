@@ -34,3 +34,8 @@ matrix:
       gemfile: gemfiles/rails_51.gemfile
     - rvm: 2.1.0
       gemfile: gemfiles/rails_52.gemfile
+    # CRuby 2.4+ requires Rails 4.2.8+
+    - rvm: 2.4.0
+      gemfile: gemfiles/rails_41.gemfile
+    - rvm: 2.5.0
+      gemfile: gemfiles/rails_41.gemfile
