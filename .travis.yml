@@ -5,7 +5,7 @@ rvm:
   - 2.1.0
   - 2.2.2
   - 2.3.0
-  - 2.4.0
+  - 2.4.1
   - 2.5.0
 gemfile:
   - gemfiles/rails_41.gemfile
@@ -41,8 +41,13 @@ matrix:
       gemfile: gemfiles/rails_52.gemfile
     - rvm: 2.1.0
       gemfile: gemfiles/rails_edge.gemfile
+    # Rails 6.0+ requires CRuby 2.4.1+
+    - rvm: 2.2.2
+      gemfile: gemfiles/rails_edge.gemfile
+    - rvm: 2.3.0
+      gemfile: gemfiles/rails_edge.gemfile
     # CRuby 2.4+ requires Rails 4.2.8+
-    - rvm: 2.4.0
+    - rvm: 2.4.1
       gemfile: gemfiles/rails_41.gemfile
     - rvm: 2.5.0
       gemfile: gemfiles/rails_41.gemfile
