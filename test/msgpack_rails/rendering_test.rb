@@ -1,6 +1,10 @@
 require_relative "../test_helper"
 
 class ContactsController < ApplicationController
+  def raw
+    @contact = new_contact
+    render msgpack: @contact
+  end
   def serialized
     @contact = new_contact
     render msgpack: @contact.to_msgpack
@@ -27,6 +31,11 @@ class RenderingTest < ActionController::TestCase
     end
     r.finalize!
     @routes = r
+  end
+
+  def test_raw
+    get :raw, :format => :msgpack
+    verify_response
   end
 
   def test_serialized
