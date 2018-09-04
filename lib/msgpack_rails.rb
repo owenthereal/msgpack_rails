@@ -46,6 +46,16 @@ if defined?(::Rails)
             self.response_body = data.is_a?(String) ? data : data.to_msgpack(options)
           end
         end
+
+        parameter_parser = ->(raw_data) {
+          data = ActiveSupport::MessagePack.decode(raw_data)
+          data.is_a?(Hash) ? data : { _msgpack: data }
+        }
+        if ::Rails::VERSION::MAJOR >= 5
+          ActionDispatch::Request.parameter_parsers[Mime[:msgpack].symbol] = parameter_parser
+        else
+          ActionDispatch::ParamsParser::DEFAULT_PARSERS[Mime[:msgpack]] = parameter_parser
+        end
       end
     end
   end

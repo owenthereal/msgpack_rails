@@ -11,5 +11,9 @@ end
 Rails.backtrace_cleaner.remove_silencers!
 Rails.application.initialize!
 
+FakeApp.routes.draw do
+  post ":controller/:action"
+end
+
 class ApplicationController < ActionController::Base
 end
